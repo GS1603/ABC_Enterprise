@@ -1,0 +1,116 @@
+﻿@model Shop.Models.InputModel
+@{
+    ViewBag.Title = "ABC Enterprise";
+}
+
+<style>
+  
+
+    /* Add padding to containers */
+    .container {
+        padding: 16px;
+        background-color: white;
+    }
+    .hide {
+    display: none !important;
+    }
+    #errmsg
+    {
+    color: red;
+    }
+    /* Full-width input fields */
+    input[type=text] {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+    }
+
+        input[type=text]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+    /* Overwrite default styles of hr */
+    hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+    }
+
+    /* Set a style for the submit button */
+    .calbtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+    }
+
+    .calbtn:hover {
+        opacity: 1;
+    }
+    
+</style>
+<div class="jumbotron">
+    <h1>ABC Enterprise</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Generate Bill</h2>
+        <br />
+        <p>
+            Welcome to ABC Enterprise.
+        </p>
+        <div class="container">
+            <h1>Welcome to ABC Enterprise</h1>
+            <p>Please fill in the details to generate bill.</p>
+            <hr>
+
+            <label for="name"><b>Customer name:</b></label>
+            <input type="text" id="name" placeholder="Enter Name" name="name">
+
+            <span id="nameErr" class="hide"><font color="red">Required</font></span>
+            <br />
+            <br />
+            <br />
+            <label for="csType"><b>Customer Type :</b></label>
+            Regular Customer<input type="radio" class="radChk" id="regCst" placeholder="Select Type" name="csType" value="regula">
+            Premium Customer<input type="radio" class="radChk" id="preCst" placeholder="Select Type" name="csType" value="premi">
+            <span id="csErr" class="hide"><font color="red">Required</font></span>
+            <br />
+            <br />
+            <br />
+            <br />
+            <label for="psw-repeat"><b>Total Purchase amount:</b></label>
+            <input type="text" placeholder="Enter Purchase Amount" id="amt">
+            <span id="errmsg"></span>
+            <span id="amtErr" class="hide"><font color="red">Required</font></span>
+            <hr>
+            <label for="billamt"><b>Payable amount:</b></label>
+            <input type="text" placeholder="Total Amount" id="billamt" disabled>
+            <hr>
+            <span id="errID" class="hide"><font color="red">Please provide proper input</font></span>
+            <hr>
+            <button type="submit" class="calbtn" id="calcu">Calculate</button>
+            <button type="submit" class="calbtn hide" id="nxtBill">New Bill</button>
+
+        </div>
+
+    </div>
+
+
+</div>
+@section Scripts{
+    <script src="~/Scripts/BillGen/BillGenerate.js"></script>
+    <script>
+            $(document).ready(function () {
+                BillGenerate.init();
+            });
+    </script>
+    }
